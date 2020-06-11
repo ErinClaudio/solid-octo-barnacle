@@ -1,3 +1,4 @@
+from post import Post
 class Blog:
     def __init__(self,title,author,posts):
         self.title = title
@@ -12,13 +13,14 @@ class Blog:
 
 
     def create_post(self,title,content):
-        self.title = title
-        self.content = content
+        self.posts.append(Post(title,content))
+       
 
     def json(self):
         return{
             "title": self.title,
-            "content": self.content
+            "content": self.content,
+            "posts":[post.json()for post in self.post]
         }
 
 
